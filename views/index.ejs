@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nima Bozorg Book Notes</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <%- include('partials/header.ejs') %>
+      <p id="sorters">
+        Sorted with <strong>my top recommendations up top</strong>. Sort by
+        <a href="/book?sort=title" id="sort-title">title</a>,
+        <a href="/book?sort=created_at" id="sort-date">newest</a>, or
+        <a href="/book?sort=rating" id="sort-rating">best</a>.
+      </p>
+      <hr />
+      <section class="books">
+        <% books.forEach(book => { %>
+        <article class="book">
+          <div class="book-cover">
+            <img src="<%= book.isbn_code %>" alt="Cover of <%= book.title %>" />
+          </div>
+
+          <div class="book-info">
+            <h2 class="book-title"><%= book.title %></h2>
+            <h3 class="book-author">by <%= book.author %></h3>
+
+            <p class="book-meta">
+              <span
+                ><strong>Date Read:</strong>
+                <%= book.created_at ? new
+                Date(book.created_at).toISOString().slice(0,10) : "—" %>
+              </span>
+              <br />
+              <span
+                ><strong>How Strongly I Recommend It:</strong>
+                <%= book.rating %>/10
+              </span>
+            </p>
+
+            <p class="book-summary"><%= book.review %></p>
+
+            <a href="/book/<%= book.id %>" class="notes-link"
+              >Read my notes →</a
+            >
+          </div>
+        </article>
+        <hr />
+
+        <% }) %>
+      </section>
+
+      <footer>
+        <p>
+          And please read <a href="#">this FAQ page</a>about these notes.you can
+          also <a href="#">email me</a>.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>

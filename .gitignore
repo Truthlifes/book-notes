@@ -1,0 +1,24 @@
+# Node modules (dependencies)
+node_modules/
+
+# Environment variables
+.env
+
+# OS/system files
+.DS_Store
+Thumbs.db
+
+# Log files
+npm-debug.log
+yarn-error.log
+
+# Backup or temporary files
+*.bak
+*.tmp
+
+# Database exports or local seeds (if you ever export)
+*.sql
+
+# Optional: editor config/cache
+.vscode/
+.idea/

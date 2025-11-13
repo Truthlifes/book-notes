@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Profile</title>
+  <link rel="icon" type="image/png" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <%- include("../partials/user_header.ejs") %>
+
+  <main class="profile-edit-container">
+    <div class="profile-edit-card">
+      <h1>Edit Profile</h1>
+
+      <form action="/profile/edit" method="POST" enctype="multipart/form-data">
+        <label>Username:</label><br />
+        <input type="text" name="username" value="<%= user.username %>" required /><br />
+
+        <label>Email:</label><br />
+        <input type="email" name="email" value="<%= user.email %>" required /><br />
+
+        <label>Change Password:</label><br />
+        <input type="password" name="newPassword" placeholder="Leave empty if no change" /><br />
+
+        <label>Profile Image:</label><br />
+        <img
+          src="<%= user.profile_image || '/images/default-avatar.png' %>"
+          alt="Profile"
+          class="profile-avatar"
+        /><br />
+        <input type="file" name="profileImage" accept="image/*" /><br /><br />
+
+        <button type="submit" class="save-btn">Save Changes</button>
+      </form>
+
+      <a href="/profile" class="back-link">← Back to Profile</a>
+    </div>
+  </main>
+</body>
+</html>

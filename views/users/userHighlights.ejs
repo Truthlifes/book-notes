@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= user.username %>’s Highlights</title>
+  <link rel="icon" type="image/png" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1><%= user.username %>’s Highlights</h1>
+  </header>
+
+  <main>
+    <div class="highlights-list">
+      <% if(highlights === undefined){ %>
+        <p>No highlights added yet.</p>
+      <% } else { %>
+        <% highlights.forEach(h => { %>
+          <div class="highlight-card">
+            <h3><%= h.title %></h3>
+            <blockquote>“<%= h.quote %>”</blockquote>
+            <% if (h.note) { %>
+              <p><em><%= h.note %></em></p>
+            <% } %>
+            <p class="highlight-date"><%= h.created_at.toDateString() %></p>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+  </main>
+</body>
+</html>
+

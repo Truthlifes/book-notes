@@ -1,12 +1,25 @@
-/*basic*/
-body {
+/* html, body {
+  
+  display: flex;
+  flex-direction: column;
+} */
+
+main {
+  flex: 1;
+}
+
+body.book-info,
+body.main-page {
   margin: 0;
   background-color: #000;
   color: #ddd;
   font-family: Georgia, serif;
   line-height: 1.7;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  /* height: 100%; */
 }
 
 .container {
@@ -16,20 +29,25 @@ body {
 }
 
 /* title */
-h1, h2 {
+h1,
+h2 {
   color: #8f0;
   font-weight: normal;
   margin: 0;
   text-align: center;
 }
-h2 { margin-bottom: 20px; }
+h2 {
+  margin-bottom: 20px;
+}
 
 a {
   color: #4af;
   text-decoration: underline;
 }
 
-p { text-align: justify; }
+p {
+  text-align: justify;
+}
 
 .book {
   display: flex;
@@ -138,7 +156,6 @@ hr {
   line-height: 1.7;
   font-size: 1rem;
   white-space: pre-line;
-
 }
 
 .back-link {
@@ -169,6 +186,733 @@ hr {
   .book-notes p {
     text-align: justify;
     white-space: pre-line;
-
   }
+}
+/* ==================== GLOBAL ==================== */
+body {
+  margin: 0;
+  background-color: #000;
+  color: #ddd;
+  font-family: Georgia, serif;
+  line-height: 1.7;
+}
+
+a {
+  color: #4af;
+  text-decoration: underline;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #333;
+  margin: 20px 0;
+}
+
+/* ==================== TITLES ==================== */
+h1,
+h2 {
+  color: limegreen;
+  font-weight: normal;
+  text-align: center;
+  margin: 0;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+/*===================== REGISTER PAGE =======================*/
+/* کانتینر کلی فرم */
+.form-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 60px auto;
+  background-color: #0a0a0a;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(176, 255, 0, 0.15);
+}
+
+/* عنوان فرم */
+.form-container h2 {
+  color: #b0ff00;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* لیبل‌ها */
+.form-container label {
+  display: block;
+  color: #b0ff00;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* تمام inputها و textareaها */
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"],
+.form-container textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #111;
+  color: #b0ff00;
+  border: 1px solid #333;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: "Segoe UI", sans-serif;
+  transition: all 0.25s ease;
+  outline: none;
+  margin-bottom: 18px;
+}
+
+/* Hover روی inputها */
+.form-container input:hover,
+.form-container textarea:hover {
+  border-color: #b0ff00;
+}
+
+/* Focus روی inputها */
+.form-container input:focus,
+.form-container textarea:focus {
+  border-color: #b0ff00;
+  box-shadow: 0 0 8px #b0ff00;
+}
+
+/* Placeholder */
+.form-container input::placeholder,
+.form-container textarea::placeholder {
+  color: #666;
+  font-style: italic;
+}
+
+/* Textarea خاص برای bio */
+.form-container textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+/* دکمه‌ی Submit */
+.form-container button[type="submit"] {
+  width: 100%;
+  background-color: #b0ff00;
+  color: #000;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 12px 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.form-container button[type="submit"]:hover {
+  background-color: #a5f000;
+  box-shadow: 0 0 10px #b0ff00;
+}
+.form-footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #aaa;
+  font-size: 0.95rem;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.form-footer a {
+  color: #b0ff00;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 5px;
+  transition: all 0.2s ease;
+}
+
+.form-footer a:hover {
+  color: #d4ff60;
+  text-shadow: 0 0 6px #b0ff00;
+}
+
+/* ==================== USER HEADER PAGE ==================== */
+.profile-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 4fr 1fr;
+}
+.header {
+  display: grid;
+  grid-area: 1/1/2/3;
+}
+.site-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.logo-section h1 {
+  font-size: 2.8rem;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+.logo-section h2 {
+  font-weight: normal;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.header-description {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  max-width: 750px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.bio-empty {
+  color: #777;
+  font-style: italic;
+}
+
+.nav-logo {
+  color: #b3ff00;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.nav-links {
+  list-style-type: none;
+}
+.userpage-home {
+  color: #b3ff00;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.5rem;
+}
+
+/* ==================== NAVBAR USER INFO ==================== */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #b3ff00;
+  transition: 0.3s;
+}
+
+.user-avatar:hover {
+  transform: scale(1.1);
+  border-color: #fff;
+}
+
+.user-info a {
+  color: #b3ff00;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logout-btn {
+  color: #ff3b3b;
+  border: 1px solid #ff3b3b;
+  padding: 6px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+}
+
+.logout-btn:hover {
+  color: #ff4040;
+}
+
+.login-btn,
+.register-btn {
+  color: #b3ff00;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-btn:hover,
+.register-btn:hover {
+  text-decoration: underline;
+}
+
+/* ==================== PROFILE PAGE (دو ستونه) ==================== */
+.profile-layout {
+  display: grid;
+  grid-area: 2/1/3/3;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  align-items: center;
+  justify-items: center;
+  gap: 20px;
+  min-height: 80vh;
+  padding: 40px 60px;
+  color: #ccc;
+}
+
+.profile-left {
+  text-align: center;
+  border-right: 1px dotted #444;
+  padding-right: 40px;
+}
+
+.username {
+  color: limegreen;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: limegreen;
+  margin-bottom: 20px;
+}
+
+.bio-text {
+  color: #ccc;
+  line-height: 1.8;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.bio-text.empty {
+  font-style: italic;
+  color: #777;
+}
+
+/* کارت اطلاعات سمت راست */
+.profile-right {
+  display: flex;
+  justify-content: center;
+}
+
+.info-card {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 15px;
+  box-shadow: 0 0 10px limegreen;
+  padding: 30px 40px;
+  text-align: center;
+  width: 320px;
+}
+
+.avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid limegreen;
+  margin-bottom: 15px;
+}
+
+.email {
+  margin: 10px 0 20px;
+  color: #ccc;
+}
+
+.books-btn {
+  display: inline-block;
+  background-color: limegreen;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.books-btn:hover {
+  background-color: #aaff00;
+}
+
+/* ==================== COMMENT PAGE ==================== */
+.comments-container {
+  max-width: 700px;
+  margin: 3rem auto;
+  color: #b3ff00;
+}
+
+.comment-list {
+  list-style: none;
+  padding: 0;
+}
+
+.comment-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid #333;
+}
+
+.comment-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #b3ff00;
+}
+
+.comment-form textarea {
+  width: 100%;
+  height: 100px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
+.comment-form button {
+  margin-top: 0.5rem;
+  background: #b3ff00;
+  color: #000;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* دکمه مشاهده نظرات در صفحه اصلی */
+.view-comments-btn {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background: #b3ff00;
+  color: #000;
+  padding: 0.3rem 0.8rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.view-comments-btn:hover {
+  background: #fff;
+}
+
+/* ==================== FOOTER ==================== */
+footer {
+  grid-area: 3/1/4/3;
+  text-align: center;
+  justify-items: center;
+  color: #888;
+  padding: 20px 0;
+  margin-top: 40px;
+  border-top: 1px solid #333;
+  font-size: 0.9rem;
+}
+/*==================== MAIN HEADER PAGE===============*/
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #000;
+  border-bottom: 1px solid #222;
+  gap: 2rem;
+}
+
+.site-name {
+  color: #b0ff00;
+  font-size: 1.8rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #b0ff00;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #b0ff00;
+}
+
+.username {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+}
+
+.login-btn {
+  background-color: #b0ff00;
+  color: #000;
+}
+
+.register-btn {
+  border: 1px solid #b0ff00;
+  color: #b0ff00;
+}
+
+.logout-btn {
+  color: #ff3b3b;
+  border: 1px solid #ff3b3b;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.site-description {
+  text-align: center;
+  color: #b0ff00;
+  background-color: #000;
+  padding: 10px 30px;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #111;
+}
+/*=============USER BOOKS AND HIGHLIGHTS=============*/
+/* ==============================
+   GLOBAL STYLES (مشترک بین هر دو صفحه)
+================================= */
+
+body {
+  background-color: #000;
+  color: #ccc;
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #111;
+}
+
+header h1 {
+  color: #b0ff00;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* ==============================
+   BOOKS PAGE
+================================= */
+
+.books-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 40px auto;
+  width: 85%;
+  max-width: 900px;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  background: #0a0a0a;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(176, 255, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(176, 255, 0, 0.3);
+}
+
+.book-card img {
+  width: 120px;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 0 10px #b0ff00;
+}
+
+.book-info h3 {
+  color: #b0ff00;
+  margin-bottom: 6px;
+}
+
+.book-info p {
+  margin: 4px 0;
+  color: #ccc;
+}
+
+.book-info strong {
+  color: #b0ff00;
+}
+
+/* دکمه‌ها */
+.btn {
+  background-color: #b0ff00;
+  color: #000;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #d4ff60;
+  box-shadow: 0 0 10px #b0ff00;
+}
+
+/* ==============================
+   HIGHLIGHTS PAGE
+================================= */
+
+.highlights-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin: 40px auto;
+  width: 85%;
+  max-width: 800px;
+}
+
+.highlight-card {
+  background: #0a0a0a;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(176, 255, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.highlight-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(176, 255, 0, 0.3);
+}
+
+.highlight-card h3 {
+  color: #b0ff00;
+  margin-bottom: 10px;
+}
+
+blockquote {
+  color: #b0ff00;
+  font-style: italic;
+  border-left: 3px solid #b0ff00;
+  padding-left: 10px;
+  margin: 0 0 10px 0;
+}
+
+.highlight-card p {
+  color: #ccc;
+  margin: 6px 0;
+}
+
+.highlight-card em {
+  color: #b0ff00;
+}
+
+.highlight-date {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* ==============================
+   RESPONSIVE (موبایل و تبلت)
+================================= */
+
+@media (max-width: 768px) {
+  .book-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .book-card img {
+    width: 150px;
+  }
+
+  .books-list,
+  .highlights-list {
+    width: 90%;
+  }
+}
+/*=================== ADD BOOKS USER ==============*/
+
+.form-container {
+  width: 90%;
+  max-width: 600px;
+  margin: 50px auto;
+  background: #0a0a0a;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(176, 255, 0, 0.1);
+}
+label {
+  display: block;
+  color: #b0ff00;
+  margin-top: 15px;
+  font-weight: 600;
+}
+input,
+textarea,
+select {
+  width: 100%;
+  background: #111;
+  color: #b0ff00;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 5px;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 1rem;
+}
+input:focus,
+textarea:focus {
+  border-color: #b0ff00;
+  box-shadow: 0 0 8px #b0ff00;
+  outline: none;
+}
+button {
+  margin-top: 25px;
+  width: 100%;
+  background-color: #b0ff00;
+  color: #000;
+  font-weight: bold;
+  padding: 12px 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+}
+button:hover {
+  background-color: #d4ff60;
+  box-shadow: 0 0 10px #b0ff00;
 }

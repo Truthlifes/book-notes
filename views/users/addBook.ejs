@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Book</title>
+    <link rel="icon" type="image/png" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      
+      <form action="/add" method="POST" class="form-container">
+        <h2>Add New Book</h2>
+
+        <label for="title">Book Title:</label>
+        <input type="text" name="title" id="title" required />
+
+        <label for="author">Author:</label>
+        <input type="text" name="author" id="author" />
+
+        <label for="isbn">ISBN:</label>
+        <input type="text" name="isbn" id="isbn" />
+
+        <label for="rating">Rating (1–10):</label>
+        <input type="number" name="rating" id="rating" min="1" max="10" />
+
+        <label for="date_read">Date Read:</label>
+        <input type="date" name="date_read" id="date_read" />
+
+        <label for="review">Your Thoughts:</label>
+        <textarea name="review" id="review"></textarea>
+
+        <hr />
+
+        <h3>Add Highlight (Optional)</h3>
+
+        <label for="quote">Favorite Quote:</label>
+        <textarea
+          name="quote"
+          id="quote"
+          placeholder="Write a quote you liked..."
+        ></textarea>
+
+        <label for="note">Your Note:</label>
+        <textarea
+          name="note"
+          id="note"
+          placeholder="Add your own thoughts..."
+        ></textarea>
+
+        <button type="submit">Save Book & Highlight</button>
+      </form>
+    </div>
+  </body>
+</html>

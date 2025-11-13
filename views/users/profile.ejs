@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <%- include("../partials/head") %>
+    <link rel="icon" type="image/png" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/css/profile.css" />
+  </head>
+
+  <body class="profile-container">
+    <div class="header"><%- include("../partials/user_header") %></div>
+    <main class="profile-layout">
+      <!-- بخش چپ: توضیحات کاربر -->
+      <section class="profile-left">
+        <h1 class="username"><%= user.username.toUpperCase() %></h1>
+        <h3 class="subtitle">BOOKS I'VE READ</h3>
+
+        <% if (user.bio) { %>
+        <p class="bio-text"><%= user.bio %></p>
+        <% } else { %>
+        <p class="bio-text empty">
+          this user doesn't write anything about themselves.
+        </p>
+        <% } %>
+      </section>
+
+      <!-- بخش راست: کارت اطلاعات -->
+      <section class="profile-right">
+        <div class="info-card">
+          <img
+            src="<%= user.profile_image || '/images/default-avatar.png' %>"
+            alt="Profile"
+            class="avatar"
+          />
+
+          <h2><%= user.username %></h2>
+          <p class="email"><strong>Email:</strong> <%= user.email %></p>
+
+          <a href="/users/<%= user.username %>/books" class="books-btn">
+            books i've read
+          </a>
+          <div class="profile-buttons">
+            <a href="/profile/<%= user.id %>/books" class="btn">My Books</a>
+            <a href="/profile/<%= user.id %>/highlights" class="btn"
+              >My Highlights</a
+            >
+            <a href="/add" class="btn">+ Add New Book</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <%- include("../partials/footer") %>
+  </body>
+</html>

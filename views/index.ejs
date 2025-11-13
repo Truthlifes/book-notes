@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nima Bozorg Book Notes</title>
+    <!-- for show icon next to title -->
+    <link rel="icon" type="image/png" href="/images/favicon.ico">
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
-  <body>
+  <body class="main-page">
     <main class="container">
-      <%- include('partials/header.ejs') %>
+      <%- include("./partials/main_header.ejs") %>
       <p id="sorters">
         Sorted with <strong>my top recommendations up top</strong>. Sort by
         <a href="/book?sort=title" id="sort-title">title</a>,
@@ -41,6 +43,7 @@
             </p>
 
             <p class="book-summary"><%= book.review %></p>
+            <a href="/books/<%= book.id %>/comments" class="view-comments-btn">View Comments</a>
 
             <a href="/book/<%= book.id %>" class="notes-link"
               >Read my notes →</a

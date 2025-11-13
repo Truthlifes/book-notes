@@ -1,0 +1,60 @@
+<header class="site-header">
+  <div class="header-top">
+    <div class="logo-section">
+      <% if (profileUser) { %>
+        <!-- اگر در صفحه پروفایل یوزر خاصی هستیم -->
+        <h1><%= profileUser.username.toUpperCase() %></h1>
+        <h2>BOOKS I'VE READ</h2>
+      <% } else if (user) { %>
+        <!-- اگر خود کاربر لاگین کرده -->
+        <h1><%= user.username.toUpperCase() %></h1>
+        <h2>BOOKS I'VE READ</h2>
+      <% } else { %>
+        <!-- اگر هیچ کاربری لاگین نکرده -->
+        <h1>BOOK NOTES</h1>
+        <h2>READ. LEARN. SHARE.</h2>
+      <% } %>
+    </div>
+
+    <nav class="navbar">
+      <a href="/" class="nav-logo">📚 Book Notes</a>
+
+      <ul class="nav-links">
+        <li><a href="/" class="userpage-home">Home</a></li>
+
+        <% if (user) { %>
+          <li class="user-info">
+            <a href="/users/<%= user.username %>">
+              <img
+                src="<%= user.profile_image || '/images/default-avatar.png' %>"
+                alt="User Avatar"
+                class="user-avatar"
+              />
+            </a>
+            <a href="/users/<%= user.username %>" class="username-link">
+              <%= user.username %>
+            </a>
+            <a href="/logout" class="logout-btn">Logout</a>
+          </li>
+        <% } else { %>
+          <li><a href="/login" class="login-btn">Login</a></li>
+          <li><a href="/register" class="register-btn">Register</a></li>
+        <% } %>
+      </ul>
+    </nav>
+  </div>
+
+  <p class="header-description">
+    <% if (profileUser && profileUser.bio) { %>
+      <span class="bio-empty"> here are some information about this user</span>
+    <% } else if (profileUser) { %>
+      <span class="bio-empty">this user doesn't write anything about themselves</span>
+    <% } else { %>
+      Tiny summary but <strong>detailed notes for each</strong>. Use the ISBN
+      number to find it from your local library or anywhere else.
+      <strong>This page will constantly update as I read more</strong>, so
+      bookmark it if you want to check back in a few months.
+    <% } %>
+  </p>
+</header>
+<!-- <hr /> -->

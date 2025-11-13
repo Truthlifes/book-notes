@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><%= book.title %> — Notes</title>
-  <link rel="stylesheet" href="/css/styles.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= book.title %> — Notes</title>
+    <link rel="icon" type="image/png" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
 
-<body>
-  <main class="container">
+  <body class="book-info">
+    <%- include("./partials/main_header.ejs") %>
+    <main class="container">
+      <a href="/" class="back-link">← Back to all books</a>
 
-    <a href="/" class="back-link">← Back to all books</a>
+      <article class="book-page">
+        <div class="book-cover">
+          <img src="<%= book.isbn_code %>" alt="Cover of <%= book.title %>" />
+        </div>
 
-    <article class="book-page">
-      <div class="book-cover">
-        <img src="<%= book.isbn_code %>" alt="Cover of <%= book.title %>">
-      </div>
+        <div class="book-details">
+          <h1 class="book-title"><%= book.title %></h1>
+          <h3 class="book-author">by <%= book.author %></h3>
 
-      <div class="book-details">
-        <h1 class="book-title"><%= book.title %></h1>
-        <h3 class="book-author">by <%= book.author %></h3>
+          <p class="book-meta">
+            <strong>Date Read:</strong>
+            <%= book.created_at ? new
+            Date(book.created_at).toISOString().slice(0,10) : "—" %><br />
+            <strong>How Strongly I Recommend It:</strong>
+            <%= book.rating %>/10
+          </p>
 
-        <p class="book-meta">
-          <strong>Date Read:</strong>
-          <%= book.created_at ? new Date(book.created_at).toISOString().slice(0,10) : "—" %><br>
-          <strong>How Strongly I Recommend It:</strong>
-          <%= book.rating %>/10
-        </p>
+          <p class="book-summary"><%= book.review %></p>
+        </div>
+      </article>
 
-        <p class="book-summary"><%= book.review %></p>
-      </div>
-    </article>
-
-    <section class="book-notes">
-      <h2>My Notes</h2>
-      <p><%= book.data_read %></p>
-    </section>
-  </main>
-</body>
+      <section class="book-notes">
+        <h2>My Notes</h2>
+        <p><%= book.data_read %></p>
+      </section>
+      <hr />
+    </main>
+  </body>
 </html>

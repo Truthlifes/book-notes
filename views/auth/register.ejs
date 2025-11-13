@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Register</title>
+    <link rel="icon" type="image/png" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <h1>Register</h1>
+    <form
+      action="/register"
+      method="POST"
+      enctype="multipart/form-data"
+      class="form-container"
+    >
+      <label>Username:</label><br />
+      <input type="text" name="username" required /><br />
+
+      <label>Email:</label><br />
+      <input type="email" name="email" required /><br />
+
+      <label>Password:</label><br />
+      <input type="password" name="password" required /><br />
+
+      <label>Bio:</label><br />
+      <textarea name="bio" class="bio-input"></textarea><br />
+
+      <label>Profile Image:</label><br />
+      <input type="file" name="profileImage" accept="image/*" /><br /><br />
+
+      <button type="submit">Register</button>
+
+      <div class="form-footer">
+        <p>
+          Already have an account?
+          <a href="/login">Login here</a>
+        </p>
+      </div>
+    </form>
+  </body>
+</html>

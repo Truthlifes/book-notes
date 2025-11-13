@@ -1,211 +1,103 @@
-# 📚 Book Notes Project
+# Capstone Project 5 -- Personal Reading & Notes Management Platform
 
-A full-stack Node.js project that lets you record the books you've read, rate them, write notes, and display them beautifully — inspired by [Derek Sivers' book notes site](https://sive.rs/book).
+A full-stack Node.js application for tracking books you've read, storing
+notes, managing user profiles, and allowing users to leave comments on
+books.\
+The platform supports user authentication, book management, personal
+notes, and profile customization with image uploads.
 
----
+## Features
 
-## 🧠 Overview
+- User registration & login (Passport Local)
+- Session-based authentication
+- Add books with title, author, rating, notes, quotes
+- Detailed book notes page
+- Comment system per book
+- User profile with editable information
+- Profile image upload (Multer)
+- EJS server-side rendering
+- PostgreSQL-backed models
 
-After finishing a book, we often forget the key takeaways.
-This project helps you store all the books you've read, including your personal ratings, reading dates, and summaries.
-Covers are fetched dynamically using the **Open Library Covers API**, and all book data is persisted in a **PostgreSQL** database.
-Book entries can also be seeded automatically from a `.txt` file using `seedBooks.js`.
+## Project Structure
 
----
+    Capstone_project_5/
+    ├── config/ # Configuration for Passport, Multer, Database
+    ├── controllers/ # Application logic for Authentication, Books, Comments, Users
+    ├── db/ # Database query functions
+    ├── middleware/ # Authentication checks, upload handlers
+    ├── models/ # Data models (User, Book, Comment)
+    ├── public/ # Static assets (CSS, images)
+    ├── routes/ # Express routes for all major sections
+    ├── stories/ # Seed data / sample book entries
+    ├── views/ # EJS templates for rendering pages
+    ├── index.js # Main server entry point
+    └── .env # Environment configuration
 
-## 🏗️ Features
+## Technologies Used
 
-* ✅ Add, update, and delete book records (Full CRUD)
-* 🗂️ Automatically sync data from local `.txt` file
-* 🖼️ Fetch book covers via the **OpenLibrary Covers API**
-* 🔍 Sort books by **rating**, **recency**, or **title**
-* 📅 Track when each book was read (`created_at` timestamps)
-* 🎨 Responsive and minimal UI built with **EJS + CSS**
-* ⚙️ Modular MVC structure (Models, Controllers, Routes)
-* 🪄 Organized database utilities inside `/db` folder
+- Node.js + Express
+- PostgreSQL (pg)
+- Passport.js (Local Strategy)
+- express-session + connect-pg-simple
+- Multer
+- Bcrypt
+- EJS
 
----
+## Setup & Installation
 
-## 🗂️ Project Structure
+### Install dependencies
 
-```
-project-root/
-│
-├── config/
-│   └── dbConfig.js          # PostgreSQL connection setup
-│
-├── controllers/
-│   └── mainPageController.js  # Main logic for rendering pages
-│
-├── models/
-│   ├── db.js                 # Query wrapper around pg.Pool
-│   └── userModel.js          # Database methods (CRUD + sort)
-│
-├── public/
-│   ├── styles.css            # Frontend styling
-│   └── images/               # (Optional) local images
-│
-├── routes/
-│   └── indexRoutes.js        # Express routes
-│
-├── views/
-│   ├── index.ejs             # Main page
-│   ├── layout.ejs            # Shared layout (if used)
-│   └── notes.ejs             # Detailed book notes page
-│
-├── db/
-│   ├── schema.sql            # Database schema definition
-│   ├── seedBooks.js          # Script to insert/update books
-│   └── schema-diagram.png    # Visual diagram of table structure
-│
-├── .env                      # Environment variables (used in dbConfig)
-├── README.md                 # You are here :)
-└── index.js                  # Entry point (Express server)
-```
-
----
-
-## 🧩 Database Schema
-
-Your PostgreSQL database should be named **`notebook`**, with one main table: `books`
-
-| Column       | Type                                   | Description                    |
-| ------------ | -------------------------------------- | ------------------------------ |
-| `id`         | SERIAL PRIMARY KEY                     | Unique ID for each book        |
-| `title`      | VARCHAR(255)                           | Title of the book              |
-| `author`     | VARCHAR(255)                           | Author name                    |
-| `rating`     | INTEGER                                | User rating (1–10)             |
-| `created_at` | TIMESTAMP WITH TIME ZONE DEFAULT NOW() | When it was added/read         |
-| `data_read`  | TEXT                                   | Short notes or takeaways       |
-| `isbn_code`  | TEXT   UNIQUE                          | UNIQUE Book ISBN code (for API)|
-
----
-
-## 🧰 Installation
-
-### 1️⃣ Clone this repository
-
-```bash
-git clone https://github.com/truthlifes/book-notes.git
-cd book-notes
-```
-
-### 2️⃣ Install dependencies
-
-```bash
 npm install
-```
 
-### 3️⃣ Configure your environment
+### Create .env file
 
-Make sure your `.env` file exists in the project root and contains:
+PORT=3000 SESSION_SECRET=your_secret_key DB_HOST=localhost DB_PORT=5432
+DB_USER=postgres DB_PASSWORD=your_password DB_NAME=your_database_name
 
-```
-PGUSER=your_postgres_username
-PGHOST=localhost
-PGDATABASE=notebook
-PGPASSWORD=your_postgres_password
-PGPORT=5432
-```
+### Start the server
 
-### 4️⃣ Create the database
-
-Open your PostgreSQL terminal or pgAdmin and run:
-
-```sql
-CREATE DATABASE notebook;
-\c notebook
-\i db/schema.sql
-```
-
-### 5️⃣ Seed the data (optional)
-
-If you have `/db/books.txt` prepared with book data:
-
-```bash
-node db/seedBooks.js
-```
-
-### 6️⃣ Run the server
-
-```bash
-nodemon index.js
-```
-
-or
-
-```bash
 node index.js
-```
 
-The app runs on:
-👉 [http://localhost:3000](http://localhost:3000)
+## Authentication Flow
 
----
+- Users register through /register
 
-## 🧭 Sorting
+- Passwords are hashed with bcrypt
 
-| Query Parameter   | Sorts By            |
-| ---------------   | ------------------- |
-| `?sort=title`     | Book title (A–Z)    |
-| `?sort=rating`    | Rating (High → Low) |
-| `?sort=created_at`| Most recent first   |
+- Passport’s Local Strategy validates login credentials
 
-Example:
+- Sessions are stored in PostgreSQL through connect-pg-simple
 
-```
-http://localhost:3000/?sort=rating
-```
+- Logged-in users gain access to book management, comments, and profile pages
 
----
+## Book Management
 
-## 🚀 API Integration
+- Add new books with a form
 
-This project uses **[OpenLibrary Covers API](https://openlibrary.org/dev/docs/api/covers)** to fetch book covers dynamically:
+- View all books on the homepage
 
-Example endpoint:
+- Open each book’s dedicated notes page
 
-```
-https://covers.openlibrary.org/b/isbn/9780140328721-L.jpg
-```
+- Store rating, review, quotes, and personal notes
 
-> Note: Only the **Covers API** is used, not the full metadata API.
+See all books associated with their profile
 
----
+## Comments
 
-## 🧱 Tech Stack
+- Each book has a comment section
 
-* **Node.js** + **Express.js**
-* **PostgreSQL** (with `pg`)
-* **EJS** templating
-* **Axios** for API calls
-* **CSS / Flexbox** for responsive UI
+- Only authenticated users can post comments
 
----
+- Comments are stored in the database and displayed chronologically
 
-## 🧪 Testing
+## User Profiles
 
-* Run manual checks using `/db/seedBooks.js`
-* Verify CRUD functionality via browser or Postman
-* All queries and error handling are logged in the console
+- Profile image upload
+- Personal info
+- User's books and highlights
 
----
+## Improvements (Optional)
 
-## 🤝 Contributing
-
-Feel free to fork this repo, open issues, or submit pull requests.
-Suggestions and improvements are always welcome!
-
----
-
-## 🧑‍💻 Author
-
-Developed by **Nima**
-📍 Student of full-stack web development & cybersecurity
-📬 [GitHub Profile](https://github.com/truthlifes)
-
----
-
-## 📝 License
-
-This project is open-source under the [MIT License](LICENSE).
+- Add validation (Zod/Yup)
+- Add Helmet, CORS, rate-limit
+- Add tests (Jest/Supertest)

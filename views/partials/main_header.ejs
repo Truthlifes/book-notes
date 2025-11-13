@@ -1,0 +1,28 @@
+<header class="main-header">
+  <div class="header-left">
+    <a href="/" class="site-name">📚 BOOK NOTES</a>
+  </div>
+  
+  <div class="header-right">
+    <% if (user) { %>
+        <%= console.log(user.username) %>
+      <!-- کاربر لاگین کرده -->
+      <a href="/users/<%= user.username %>" class="user-info">
+        <img src="<%= user.profile_image %>" alt="profile" class="user-avatar" />
+        <span class="username"><%= user.username %></span>
+      </a>
+      <a href="/logout" class="btn logout-btn">Logout</a>
+    <% } else { %>
+      <!-- کاربر لاگین نکرده -->
+      <a href="/login" class="btn login-btn">Login</a>
+      <a href="/register" class="btn register-btn">Register</a>
+    <% } %>
+  </div>
+</header>
+
+<section class="site-description">
+  <p>
+    Welcome to <strong>Book Notes</strong> — a place where readers share what they’ve learned
+    from each book. Explore others’ notes or build your own library of insights.
+  </p>
+</section>

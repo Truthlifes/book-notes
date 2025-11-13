@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= user.username %>’s Books</title>
+  <link rel="icon" type="image/png" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/css/styles.css">
+  
+</head>
+<body>
+  <header>
+    <h1><%= user.username %>’s Books</h1>
+  </header>
+
+  <main>
+    <div class="books-list">
+      <% if (books === undefined) { %>
+        <p>No books found for this user yet.</p>
+      <% } else { %>
+        <% books.forEach(book => { %>
+          <div class="book-card">
+            <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="<%= book.title %>">
+            <div class="book-info">
+              <h3><%= book.title %></h3>
+              <p><strong>Author:</strong> <%= book.author %></p>
+              <p><strong>Date Read:</strong> <%= book.date_read ? book.date_read.toISOString().split('T')[0] : 'N/A' %></p>
+              <p><strong>Rating:</strong> <%= book.rating %>/10</p>
+              <p><strong>My Experience:</strong> <%= book.review %></p>
+              <a href="/profile/<%= user.id %>/highlights" class="btn">View Details</a>
+            </div>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+  </main>
+</body>
+</html>

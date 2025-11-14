@@ -59,8 +59,7 @@ export const BookControl = {
       const { id } = req.params;
 
       const user = await Intrested.getUserById(id);
-      const userHighlight = await Intrested.userAndBooks(id);
-
+      const userHighlight = (await Intrested.userAndBooks(id)).rows;
       res.render("users/userHighlights", {
         user: user,
         highlights: userHighlight,

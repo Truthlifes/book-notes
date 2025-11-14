@@ -15,7 +15,7 @@ export class Intrested {
   }
 
   static async userAndBooks(id) {
-    await db.query(
+    return await db.query(
       `SELECT h.*, b.title
      FROM highlights AS h
      JOIN user_books AS b ON h.book_id = b.id
@@ -42,9 +42,10 @@ export class Intrested {
       [userId, title, author, isbn, rating, date_read, review]
     );
     const bookId = Number(bookIdDetail.rows[0].id);
+    console.log(bookId , userId)
     await db.query(
       `INSERT INTO highlights (user_id, book_id, quote, note)
-         VALUES ($1, $2, $3, $4)`,
+         VALUES ($1, $2, $3, $4) RETURNING *`,
       [userId, bookId, quote, note]
     );
   }
